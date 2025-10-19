@@ -33,14 +33,14 @@ export default function RootLayout({
         <div className="flex h-screen overflow-hidden">
           <Sidebar />
           <div className="flex-1 flex flex-col overflow-hidden">
-            <header className="bg-white shadow-sm z-10">
+            {/* <header className="bg-white shadow-sm z-10">
               <div className="px-4 py-2 flex justify-between items-center">
                 <h1 className="text-xl font-semibold text-blue-600">ClaimIQ</h1>
                 <div className="flex items-center gap-4">
                   <NavigationMenu />
                 </div>
               </div>
-            </header>
+            </header> */}
             <main className="flex-1 overflow-auto p-4 md:p-6">
               <PageTransition>
                 {children}

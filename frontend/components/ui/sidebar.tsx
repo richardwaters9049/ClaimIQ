@@ -74,17 +74,18 @@ export default function Sidebar() {
     <Button
       variant="ghost"
       size="icon"
-      className="md:hidden fixed top-4 left-4 z-50"
+      className="md:hidden fixed top-4 left-4 z-50 sidebar-btn"
       onClick={() => setMobileOpen(!mobileOpen)}
     >
       <MenuIcon className="h-5 w-5" />
     </Button>
+
   )
 
   return (
     <>
-      <MobileMenuButton />
 
+      <MobileMenuButton />
       <AnimatePresence>
         {(mobileOpen || !isMobile) && (
           <motion.div
@@ -171,7 +172,7 @@ export default function Sidebar() {
                 "flex items-center",
                 collapsed && !isMobile ? "justify-center" : ""
               )}>
-                <div className="w-8 h-8 rounded-full bg-red-600 flex items-center justify-center text-white font-semibold">
+                <div className="w-8 h-8 rounded-full bg-blue-800 flex items-center justify-center text-white font-semibold">
                   U
                 </div>
                 {(!collapsed || isMobile) && (

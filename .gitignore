@@ -23,6 +23,8 @@ wheels/
 venv/
 ENV/
 .env
+.env.*
+!.env.example
 .venv
 env/
 

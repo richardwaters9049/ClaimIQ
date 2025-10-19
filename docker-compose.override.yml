@@ -1,0 +1,26 @@
+services:
+  backend:
+    environment:
+      - FLASK_DEBUG=1
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - ./backend:/app
+      - /app/__pycache__
+      - /app/*.pyc
+      - /app/*.pyo
+      - /app/*.pyd
+      - /app/instance
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  frontend:
+    environment:
+      - NODE_ENV=development
+      - NEXT_PUBLIC_API_URL=http://localhost:5000/api
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+      - /app/.next
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    command: sh -c "bun install && bun dev"

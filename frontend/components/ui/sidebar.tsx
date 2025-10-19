@@ -3,12 +3,12 @@
 import * as React from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { 
-  HomeIcon, 
-  FileTextIcon, 
-  PlusCircleIcon, 
-  BarChartIcon, 
-  SettingsIcon, 
+import {
+  HomeIcon,
+  FileTextIcon,
+  PlusCircleIcon,
+  BarChartIcon,
+  SettingsIcon,
   HelpCircleIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
@@ -28,14 +28,14 @@ export default function Sidebar() {
   const [collapsed, setCollapsed] = React.useState(false)
   const isMobile = useMediaQuery("(max-width: 768px)")
   const [mobileOpen, setMobileOpen] = React.useState(false)
-  
+
   // Auto-collapse on mobile
   React.useEffect(() => {
     if (isMobile) {
       setCollapsed(true)
     }
   }, [isMobile])
-  
+
   const navItems = [
     {
       name: "Dashboard",
@@ -68,7 +68,7 @@ export default function Sidebar() {
       icon: HelpCircleIcon
     }
   ]
-  
+
   // Mobile menu button for small screens
   const MobileMenuButton = () => (
     <Button
@@ -80,16 +80,16 @@ export default function Sidebar() {
       <MenuIcon className="h-5 w-5" />
     </Button>
   )
-  
+
   return (
     <>
       <MobileMenuButton />
-      
+
       <AnimatePresence>
         {(mobileOpen || !isMobile) && (
           <motion.div
             initial={{ x: isMobile ? -320 : 0 }}
-            animate={{ 
+            animate={{
               x: 0,
               width: collapsed && !isMobile ? 80 : 256
             }}
@@ -111,7 +111,7 @@ export default function Sidebar() {
                   <p className="text-sm text-gray-500">AI Claims Processing</p>
                 </div>
               )}
-              
+
               <Button
                 variant="ghost"
                 size="icon"
@@ -121,9 +121,9 @@ export default function Sidebar() {
                 {collapsed ? <ChevronRightIcon className="h-4 w-4" /> : <ChevronLeftIcon className="h-4 w-4" />}
               </Button>
             </div>
-            
+
             <Separator />
-            
+
             <nav className="flex-1 p-4">
               <ul className="space-y-2">
                 {navItems.map((item) => {
@@ -134,8 +134,8 @@ export default function Sidebar() {
                         <Tooltip>
                           <TooltipTrigger asChild>
                             <Link href={item.href} onClick={() => isMobile && setMobileOpen(false)}>
-                              <Button 
-                                variant={isActive ? "default" : "ghost"} 
+                              <Button
+                                variant={isActive ? "default" : "ghost"}
                                 className={cn(
                                   "w-full",
                                   collapsed && !isMobile ? "justify-center px-2" : "justify-start",
@@ -162,17 +162,16 @@ export default function Sidebar() {
                 })}
               </ul>
             </nav>
-            
+
             <div className={cn(
               "p-4 mt-auto",
               collapsed && !isMobile ? "flex justify-center" : ""
             )}>
-              <Separator className="mb-4" />
               <div className={cn(
                 "flex items-center",
                 collapsed && !isMobile ? "justify-center" : ""
               )}>
-                <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white font-semibold">
+                <div className="w-8 h-8 rounded-full bg-red-600 flex items-center justify-center text-white font-semibold">
                   U
                 </div>
                 {(!collapsed || isMobile) && (
@@ -186,10 +185,10 @@ export default function Sidebar() {
           </motion.div>
         )}
       </AnimatePresence>
-      
+
       {/* Overlay for mobile */}
       {isMobile && mobileOpen && (
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.5 }}
           exit={{ opacity: 0 }}
